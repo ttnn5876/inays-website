@@ -3,104 +3,49 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title></title>
+    <title>Date-Based Content</title>
     <style>
         body {
-            margin: 0;
             height: 100vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            background: linear-gradient(45deg, #2596be, #ffffff);
-            font-family: "DynaPuff", system-ui;
-            color: #fff;
-        }
-        #text-container {
+            /* display: flex; */
+            font-family: Arial, sans-serif;
             text-align: center;
-            font-size: 2rem;
-            line-height: 1.5;
+            /* justify-content: center; */
+            /* align-items: center; */
+            padding: 50px;
+            font-family: "Grandstander", serif;
+            background: linear-gradient(45deg, #2596be, #ffffff);
         }
-        .line {
-            opacity: 0;
-            transform: translateY(20px);
-            transition: opacity 1s, transform 1s;
-            text-shadow: 0 0 1px #808080, 0 0 2px #808080, 0 0 3px #808080;
-        }
-        .line.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-        #reveal-button {
-            opacity: 0;
+        img {
+            max-width: 100%;
+            height: auto;
             margin-top: 20px;
-            padding: 10px 20px;
-            font-size: 1.2rem;
-            font-family: "DynaPuff", system-ui;
-            color: #ff9a9e;
-            background: #fff;
-            border: none;
-            border-radius: 20px;
-            cursor: pointer;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
-            transition: opacity 1s, transform 0.2s, box-shadow 0.2s;
-        }
-        #reveal-button.visible {
-            opacity: 1;
-        }
-        #reveal-button:hover {
-            transform: scale(1.1);
-            box-shadow: 0 6px 10px rgba(0, 0, 0, 0.2);
-        }
-        #extra-line {
-            margin-top: 20px;
-            font-size: 3rem;
-            opacity: 0;
-            transform: scale(0.8);
-            transition: opacity 1s, transform 1s;
-        }
-        #extra-line.visible {
-            opacity: 1;
-            transform: scale(1);
         }
     </style>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=DynaPuff:wght@400..700&display=swap" rel="stylesheet">
-    
-</head>
-<body>
-    <div id="text-container">
-        <div class="line">HOLA YA INAY ❤️</div>
-        <div class="line">Wish you a pleasent evening</div>
-        <div class="line">Miss you very very much</div>
-    </div>
-    <button id="reveal-button">CLICK FOR A DUCK!</button>
-    <div id="extra-line"><img src="https://i.pinimg.com/736x/88/bc/cb/88bccb6c70b5cb3bb7366ab5aad72c79.jpg"></div>
-    
+    <link href="https://fonts.googleapis.com/css2?family=Grandstander:ital,wght@0,100..900;1,100..900&family=Kanit:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
     <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            const lines = document.querySelectorAll('.line');
-            const button = document.getElementById('reveal-button');
-            const extraLine = document.getElementById('extra-line');
+        document.addEventListener("DOMContentLoaded", function() {
 
-            // Show lines sequentially
-            lines.forEach((line, index) => {
-                setTimeout(() => {
-                    line.classList.add('visible');
-                    if (index === lines.length - 1) {
-                        setTimeout(() => {
-                            button.classList.add('visible');
-                        }, 2000);
-                    }
-                }, index * 2000);
-            });
+            const targetDate = new Date("2025-01-01T00:00:00")
 
-            // Reveal extra text when button is clicked
-            button.addEventListener('click', () => {
-                extraLine.classList.add('visible');
-            });
+            const contentElement = document.getElementById("content");
+            const imageElement = document.getElementById("image");
+
+            const now = new Date();
+
+            if (now >= targetDate) {
+                contentElement.innerText = "I love you very Duckin' much, have a WONDERFUL year"
+                imageElement.src = "./img.jpg"
+            } else {
+                contentElement.innerText = "Reload me after midnight, 1/1/2025"
+            }
         });
     </script>
+</head>
+<body>
+    <h1 id="content">Loading...</h1>
+    <img id="image" src="">
 </body>
 </html>
